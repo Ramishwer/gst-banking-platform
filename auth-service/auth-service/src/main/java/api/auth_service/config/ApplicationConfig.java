@@ -24,7 +24,6 @@ public class ApplicationConfig {
 
     private final UserRepository userRepository;
 
-    // Loads user information from database
     @Bean
     public UserDetailsService userDetailsService() {
 
@@ -37,16 +36,12 @@ public class ApplicationConfig {
                 );
     }
 
-    // Password encoder is now defined here,
-    // NOT inside SecurityConfig
     @Bean
     public PasswordEncoder passwordEncoder() {
 
         return new BCryptPasswordEncoder();
     }
 
-    // AuthenticationProvider uses UserDetailsService
-    // and PasswordEncoder
     @Bean
     public AuthenticationProvider authenticationProvider(
             UserDetailsService userDetailsService,
@@ -60,7 +55,6 @@ public class ApplicationConfig {
         return provider;
     }
 
-    // AuthenticationManager is used during login
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration configuration)

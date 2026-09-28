@@ -29,32 +29,25 @@ public class SecurityConfig {
             HttpSecurity http) throws Exception {
 
         http
-                // JWT REST API doesn't need CSRF
                 .csrf(csrf -> csrf.disable())
 
-                // Don't maintain HTTP sessions
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(
                                 SessionCreationPolicy.STATELESS
                         )
                 )
 
-                // Configure public/protected endpoints
                 .authorizeHttpRequests(auth ->
                         auth
-                                // Register/login endpoints are public
                                 .requestMatchers("/api/auth/**")
                                 .permitAll()
 
-                                // Everything else needs JWT authentication
                                 .anyRequest()
                                 .authenticated()
                 )
 
-                // Use our authentication provider
                 .authenticationProvider(authenticationProvider)
 
-                // Check JWT before Spring's normal authentication filter
                 .addFilterBefore(
                         jwtAuthenticationFilter,
                         UsernamePasswordAuthenticationFilter.class
