@@ -29,16 +29,12 @@ public class ApplicationConfig {
 
         return username -> (org.springframework.security.core.userdetails.UserDetails) userRepository
                 .findByEmail(username)
-                .orElseThrow(() ->
-                        new UsernameNotFoundException(
-                                "User not found: " + username
-                        )
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username)
                 );
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-
         return new BCryptPasswordEncoder();
     }
 
