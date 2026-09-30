@@ -1,6 +1,5 @@
 package api.auth_service.controller;
 
-
 import api.auth_service.dto.AuthResponse;
 import api.auth_service.dto.LoginRequest;
 import api.auth_service.dto.RegisterRequest;
