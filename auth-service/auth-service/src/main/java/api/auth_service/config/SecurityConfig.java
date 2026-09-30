@@ -22,7 +22,6 @@ import org.springframework.context.annotation.Bean;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-
     private final AuthenticationProvider authenticationProvider;
 
     @Bean
