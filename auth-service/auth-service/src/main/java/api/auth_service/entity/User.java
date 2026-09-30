@@ -44,9 +44,7 @@ public class User {
 
     @PrePersist
     public void prePersist() {
-
         createdAt = LocalDateTime.now();
-
         if (active == null) {
             active = true;
         }
