@@ -2,7 +2,7 @@ package api.auth_service.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record LoginRequest(
+public record LoginRequest (
 
         @NotBlank(message = "Username is required")
         String username,
